@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3bl7k8jn41c"]
+
+[ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="1_55wr1"]
+[ext_resource type="Script" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
+[ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/entities/health_component.tscn" id="3_3e4p7"]
+[ext_resource type="PackedScene" uid="uid://cpi1b7hyh5e8k" path="res://scenes/entities/pathfind_component.tscn" id="4_ck1h8"]
+[ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/entities/hitbox_component.tscn" id="4_cu157"]
+[ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/entities/hurtbox_component.tscn" id="4_maag8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cs4o0"]
+radius = 9.0
+height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5w1jk"]
+radius = 28.0
+height = 72.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kf42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_55wr1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_e4crs")
+speed = 300.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]
+max_health = 10.0
+
+[node name="PathfindComponent" parent="." instance=ExtResource("4_ck1h8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cs4o0")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_maag8")]
+collision_layer = 256
+collision_mask = 16
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CapsuleShape2D_5w1jk")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_cu157")]
+collision_layer = 32
+collision_mask = 128
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_5w1jk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2, 0)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_3kf42")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="died" from="HealthComponent" to="." method="_on_death"]

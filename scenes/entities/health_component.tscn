@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crarpk83vsb7x"]
+
+[ext_resource type="Script" path="res://scripts/entities/health_component.gd" id="1_xjlvg"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_xjlvg")
+max_health = 1.0
+i_frames_duration = 0.5

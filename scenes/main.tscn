@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx0cclyboyyfv"]
+
+[ext_resource type="PackedScene" uid="uid://smrqvk2xny7w" path="res://scenes/entities/player.tscn" id="1_l7tcq"]
+[ext_resource type="PackedScene" uid="uid://c3bl7k8jn41c" path="res://scenes/entities/mob.tscn" id="3_7368b"]
+[ext_resource type="Texture2D" uid="uid://bmerujq8dhb4m" path="res://assets/sprites/6706c440-63e8-4b57-8109-5c3f307fce3e.jpg" id="3_wfrdp"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_wkisa"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1705, 960)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_wfrdp")
+centered = false
+
+[node name="Mob" parent="." instance=ExtResource("3_7368b")]
+position = Vector2(991, -390)
+
+[node name="Mob2" parent="." instance=ExtResource("3_7368b")]
+position = Vector2(1284, 685)
+
+[node name="Mob3" parent="." instance=ExtResource("3_7368b")]
+position = Vector2(-499, 647)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("5_wkisa")
+Player = ExtResource("1_l7tcq")
+Enemy = ExtResource("3_7368b")

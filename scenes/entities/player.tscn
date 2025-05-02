@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://smrqvk2xny7w"]
+
+[ext_resource type="Texture2D" uid="uid://bw67vp26o511c" path="res://assets/sprites/idle2.png" id="1_meiw8"]
+[ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
+[ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="2_ya6d1"]
+[ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/entities/health_component.tscn" id="6_gjh13"]
+[ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/entities/hurtbox_component.tscn" id="6_gomo7"]
+[ext_resource type="PackedScene" uid="uid://b2v4o6hwdnhmp" path="res://scenes/items/pistol.tscn" id="6_qo74a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ily0"]
+radius = 11.0
+height = 48.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxqha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ya6d1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ya6d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_meiw8")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ex0us"]
+radius = 21.0
+height = 64.0
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 15
+platform_floor_layers = 0
+script = ExtResource("1_q7fu6")
+speed = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, -18)
+shape = SubResource("CapsuleShape2D_6ily0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -18)
+scale = Vector2(0.370625, 0.370625)
+sprite_frames = SubResource("SpriteFrames_uxqha")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_gjh13")]
+max_health = 10.0
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_gomo7")]
+collision_layer = 128
+collision_mask = 32
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_ex0us")
+
+[node name="Pistol" parent="." instance=ExtResource("6_qo74a")]
