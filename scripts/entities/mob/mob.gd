@@ -3,9 +3,7 @@ extends CharacterBody2D
 @export
 var speed : float
 @onready
-var player : CharacterBody2D = $/root/Main/Player
-@onready
-var pathfind_component : PathfindComponent = $PathfindComponent
+var health_component: HealthComponent = $HealthComponent
 
 
 func _ready() -> void:
@@ -13,8 +11,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if player:
-		pathfind_component.follow_target(player)
+	if game.player:
+		velocity = global_position.direction_to(game.player.position).normalized() * speed
 
 
 func _physics_process(delta: float) -> void:
@@ -22,4 +20,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_death() -> void:
+	print('dead')
 	queue_free()

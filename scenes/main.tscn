@@ -17,16 +17,18 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_wfrdp")
 centered = false
 
-[node name="Mob" parent="." instance=ExtResource("3_7368b")]
-position = Vector2(991, -390)
-
-[node name="Mob2" parent="." instance=ExtResource("3_7368b")]
-position = Vector2(1284, 685)
-
-[node name="Mob3" parent="." instance=ExtResource("3_7368b")]
-position = Vector2(-499, 647)
-
 [node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("5_wkisa")
 Player = ExtResource("1_l7tcq")
 Enemy = ExtResource("3_7368b")
+
+[node name="EnemySpawnTimer" type="Timer" parent="GameManager"]
+autostart = true
+
+[node name="Entities" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="Entities" instance=ExtResource("1_l7tcq")]
+
+[connection signal="timeout" from="GameManager/EnemySpawnTimer" to="GameManager" method="_on_timer_timeout"]

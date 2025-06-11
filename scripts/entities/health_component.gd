@@ -24,7 +24,6 @@ func _ready() -> void:
 
 @export
 var is_damageable : bool = true
-
 @export
 var i_frames_duration : float
 
