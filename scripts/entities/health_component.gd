@@ -30,11 +30,13 @@ var i_frames_duration : float
 var is_invincible : bool = false
 var is_dead : bool = false
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: float) -> bool:
 	if is_damageable:
 		if not is_invincible:
 			current_health -= damage
 			invincibility_timer()
+			return true
+	return false
 
 func invincibility_timer() -> void:
 	is_invincible = true

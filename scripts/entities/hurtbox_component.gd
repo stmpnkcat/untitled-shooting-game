@@ -20,15 +20,14 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(hitbox: HitboxComponent) -> void:
-	hurt.emit(hitbox)
-	health_component.take_damage(hitbox.damage)
-	flash_sprite()
+	if health_component.take_damage(hitbox.damage):
+		hurt.emit(hitbox)
+		flash_sprite()
 
 
 func flash_sprite():
 	var mat: ShaderMaterial = sprite.material
 	if mat:
-		print("flashing")
 		mat.set_shader_parameter("enabled", true)
 		await get_tree().create_timer(0.1).timeout
 		mat.set_shader_parameter("enabled", false)
