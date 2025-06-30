@@ -39,4 +39,4 @@ unique_name_in_owner = true
 
 [node name="Exp" type="Node" parent="Collectibles"]
 
-[connection signal="timeout" from="GameManager/EnemySpawnTimer" to="GameManager" method="_on_timer_timeout"]
+[connection signal="timeout" from="GameManager/EnemySpawnTimer" to="GameManager" method="_on_enemy_spawn_timer_timeout"]

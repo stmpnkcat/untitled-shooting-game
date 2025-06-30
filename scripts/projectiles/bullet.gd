@@ -11,7 +11,6 @@ var hitbox_component = $HitboxComponent
 
 func _ready() -> void:
 	hitbox_component.damage = damage
-	connect("hit", Callable(self, "_on_hitbox_component_hit"))
 
 
 func _physics_process(delta: float) -> void:

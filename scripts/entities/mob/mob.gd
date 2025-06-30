@@ -8,10 +8,6 @@ var exp: float
 var health_component: HealthComponent = $HealthComponent
 
 
-func _ready() -> void:
-	connect("died", Callable(self, "_on_death"))
-
-
 func _process(delta: float) -> void:
 	if game.player:
 		velocity = global_position.direction_to(game.player.position).normalized() * speed
