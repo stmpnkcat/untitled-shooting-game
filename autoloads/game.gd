@@ -1,5 +1,7 @@
 extends Node
 
+const GAME_MANAGER = "/root/Main/GameManager"
+
 var player
 var rng = RandomNumberGenerator.new()
 var current_scene

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://el7b32lyhdde"]
+
+[ext_resource type="Script" path="res://scripts/collectibles/exp.gd" id="1_dyla7"]
+[ext_resource type="Texture2D" uid="uid://b35pvobmu0s3c" path="res://assets/sprites/icon.svg" id="2_fsv0k"]
+[ext_resource type="Script" path="res://scripts/entities/collectible_component.gd" id="3_dmx34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p15ge"]
+
+[node name="Exp" type="Node2D" node_paths=PackedStringArray("collectible_component")]
+script = ExtResource("1_dyla7")
+collectible_component = NodePath("CollectibleComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_fsv0k")
+
+[node name="CollectibleComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("3_dmx34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleComponent"]
+scale = Vector2(0.45, 0.45)
+shape = SubResource("RectangleShape2D_p15ge")

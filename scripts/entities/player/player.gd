@@ -10,7 +10,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction.normalized()
-	velocity = direction * 600
+	velocity = direction * speed
 	move_and_slide()
 	
 	if velocity.length() > 0:
@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_death() -> void:
 	game.player = null
-	game.switch_scene("res://scenes/menu.tscn")
+	game.switch_scene("res://scenes/main_menu.tscn")
 	queue_free()

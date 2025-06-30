@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="untitled shooting game"
-run/main_scene="res://scenes/main.tscn"
+config/name="untitled roguelike shootemup"
+run/main_scene="res://scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
@@ -66,7 +66,7 @@ reload={
 2d_physics/layer_1="Static"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Mob"
-2d_physics/layer_4="Props"
+2d_physics/layer_4="Collectible"
 2d_physics/layer_5="Player Hitbox"
 2d_physics/layer_6="Enemy Hitbox"
 2d_physics/layer_8="Player Hurtbox"

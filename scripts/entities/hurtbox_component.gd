@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for HitboxComponent in get_overlapping_areas():
 		_on_area_entered(HitboxComponent)
-
+ 
 
 func _on_area_entered(hitbox: HitboxComponent) -> void:
 	if health_component.take_damage(hitbox.damage):
