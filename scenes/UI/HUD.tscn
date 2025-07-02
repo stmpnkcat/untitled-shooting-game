@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://btiow6ip5j4aj"]
+
+[ext_resource type="Script" path="res://scripts/UI/exp_bar.gd" id="1_vtrin"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj6xr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1syl0"]
+bg_color = Color(7.89344e-06, 0.659504, 0.847415, 1)
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -549.0
+offset_right = 549.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yj6xr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1syl0")
+step = 1.0
+value = 60.0
+show_percentage = false
+script = ExtResource("1_vtrin")

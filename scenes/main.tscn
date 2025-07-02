@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx0cclyboyyfv"]
+[gd_scene load_steps=7 format=3 uid="uid://cx0cclyboyyfv"]
 
 [ext_resource type="PackedScene" uid="uid://smrqvk2xny7w" path="res://scenes/entities/player.tscn" id="1_l7tcq"]
 [ext_resource type="PackedScene" uid="uid://c3bl7k8jn41c" path="res://scenes/entities/mob.tscn" id="3_7368b"]
 [ext_resource type="Texture2D" uid="uid://bmerujq8dhb4m" path="res://assets/sprites/6706c440-63e8-4b57-8109-5c3f307fce3e.jpg" id="3_wfrdp"]
 [ext_resource type="PackedScene" uid="uid://el7b32lyhdde" path="res://scenes/collectibles/exp.tscn" id="5_buwyl"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="5_wkisa"]
+[ext_resource type="PackedScene" uid="uid://btiow6ip5j4aj" path="res://scenes/UI/HUD.tscn" id="6_8mqa2"]
 
 [node name="Main" type="Node2D"]
 
@@ -38,5 +39,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Exp" type="Node" parent="Collectibles"]
+
+[node name="Hud" parent="." instance=ExtResource("6_8mqa2")]
 
 [connection signal="timeout" from="GameManager/EnemySpawnTimer" to="GameManager" method="_on_enemy_spawn_timer_timeout"]

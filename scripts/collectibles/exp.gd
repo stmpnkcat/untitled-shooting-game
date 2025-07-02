@@ -1,10 +1,8 @@
 extends Node2D
 
 
-@export
-var collectible_component: CollectibleComponent
-var exp: float
+var exp_amount: float
 
 
-func _on_collectible_component_collected(area: Area2D) -> void:
-	print("collected")
+func _on_collectible_component_collected(body: Node2D) -> void:
+	game.exp_collected += exp_amount
