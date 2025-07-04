@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://shaders/hit_flash.tres" id="2_n4d54"]
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="2_ya6d1"]
-[ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/entities/health_component.tscn" id="6_gjh13"]
-[ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/entities/hurtbox_component.tscn" id="6_gomo7"]
+[ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="6_gjh13"]
+[ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="6_gomo7"]
 [ext_resource type="PackedScene" uid="uid://b2v4o6hwdnhmp" path="res://scenes/items/pistol.tscn" id="6_qo74a"]
 [ext_resource type="Script" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
 
@@ -85,10 +85,9 @@ animation = &"idle"
 max_health = 100.0
 is_damageable = false
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_gomo7")]
+[node name="HurtboxComponent" parent="." instance=ExtResource("6_gomo7")]
 collision_layer = 128
 collision_mask = 32
-sprite = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -19)

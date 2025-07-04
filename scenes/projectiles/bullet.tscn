@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/projectiles/bullet.gd" id="1_lhkea"]
 [ext_resource type="Texture2D" uid="uid://b35pvobmu0s3c" path="res://assets/sprites/icon.svg" id="2_yoiyr"]
-[ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/entities/hitbox_component.tscn" id="3_pe7te"]
+[ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/components/hitbox_component.tscn" id="3_pe7te"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khraq"]
-size = Vector2(42, 8)
+size = Vector2(38, 6)
 
 [node name="Bullet" type="Node2D"]
 top_level = true
@@ -18,6 +18,8 @@ texture = ExtResource("2_yoiyr")
 [node name="HitboxComponent" parent="." instance=ExtResource("3_pe7te")]
 collision_layer = 16
 collision_mask = 256
+knockback_force = 100.0
+is_single_target = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_khraq")
