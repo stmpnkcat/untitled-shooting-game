@@ -66,4 +66,4 @@ func just_died() -> void:
 	is_dead = true
 	emit_signal("died")
 	if "exp_amount" in parent:
-		get_node(game.GAME_MANAGER).spawn_exp(parent.global_position, parent.exp_amount)
+		game.game_manager.spawn_exp(parent.global_position, parent.exp_amount)

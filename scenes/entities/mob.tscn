@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="1_55wr1"]
 [ext_resource type="Script" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="3_3e4p7"]
-[ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/components/hitbox_component.tscn" id="4_cu157"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="4_maag8"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://shaders/hit_flash.tres" id="5_t0y35"]
 [ext_resource type="PackedScene" uid="uid://c5dp15igdbvxl" path="res://scenes/components/physics_component.tscn" id="7_lheee"]
@@ -33,7 +33,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 15
@@ -55,14 +55,6 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CapsuleShape2D_5w1jk")
 
-[node name="HitboxComponent" parent="." instance=ExtResource("4_cu157")]
-collision_layer = 32
-collision_mask = 128
-damage = 10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("CapsuleShape2D_5w1jk")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 material = SubResource("ShaderMaterial_1ijms")
@@ -71,5 +63,10 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_3kf42")
 
 [node name="PhysicsComponent" parent="." instance=ExtResource("7_lheee")]
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_leeo4")
+damage = 10.0
+knockback_force = 100.0
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]

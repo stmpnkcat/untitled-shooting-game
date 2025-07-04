@@ -7,6 +7,10 @@ extends Node
 const PLAYER_SPAWN_POSITION : Vector2 = Vector2(0, 0)
 
 
+func _ready() -> void:
+	game.game_manager = self
+
+
 func spawn_enemy(enemy_position: Vector2) -> void:
 	var new_enemy : Node2D = Enemy.instantiate()
 	%Entities.add_child(new_enemy)

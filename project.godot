@@ -28,6 +28,10 @@ gdscript/warnings/inferred_declaration=1
 
 window/size/resizable=false
 
+[global_group]
+
+mobs=""
+
 [input]
 
 move_up={

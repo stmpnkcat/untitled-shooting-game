@@ -1,7 +1,6 @@
 extends Node
 
-const GAME_MANAGER: String = "/root/Main/GameManager"
-
+var game_manager: Node
 var player: Node2D
 var exp_collected: float = 0
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()

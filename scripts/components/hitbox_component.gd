@@ -6,14 +6,17 @@ extends Area2D
 var damage: float
 @export
 var knockback_force: float
-@export
-var is_single_target: bool
 
+@onready
+var parent: Node2D = get_parent()
+
+var has_hit: bool = false
 
 signal hit(hurtbox: HurtboxComponent)
 
 
-func _on_area_entered(hurtbox: HurtboxComponent) -> void:
-	hit.emit(hurtbox)
-	if is_single_target: 
-		queue_free()
+func _on_area_entered(hurtbox_component: HurtboxComponent) -> void:
+	if not has_hit:
+		hit.emit(hurtbox_component)
+		hurtbox_component.recieve_hit(self)
+		has_hit = true

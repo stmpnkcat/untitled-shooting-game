@@ -83,11 +83,10 @@ animation = &"idle"
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_gjh13")]
 max_health = 100.0
-is_damageable = false
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("6_gomo7")]
 collision_layer = 128
-collision_mask = 32
+collision_mask = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -19)
