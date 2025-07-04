@@ -25,9 +25,9 @@ func _physics_process(delta: float) -> void:
 	if is_collected:
 		var to_player: Vector2 = player.global_position - parent.global_position
 		var distance: float = to_player.length()
-		var speed: float = max(game.player.speed * 1.5, distance * 10)
+		var movement_speed: float = max(game.player.movement_speed * 1.5, distance * 10)
 
-		parent.global_position += to_player.normalized() * speed * delta
+		parent.global_position += to_player.normalized() * movement_speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:

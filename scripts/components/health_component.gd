@@ -1,9 +1,13 @@
 class_name HealthComponent
 extends Node2D
 
-signal died
 
-@export
+signal died
+signal healed(amount: float)
+signal hurt(amount: float)
+
+@onready var parent: Node2D = get_parent()
+
 var max_health: float:
 	set (value):
 		max_health = value
@@ -16,25 +20,25 @@ var current_health: float:
 			current_health = max_health
 		if current_health <= 0 and not is_dead:
 			just_died()
-@export
 var is_damageable: bool = true
-@export
-var i_frames_duration: float
-
+var iframes_duration: float = 0
 var is_invincible: bool = false
 var is_dead: bool = false
-var parent: Node2D
 
 
 func _ready() -> void:
-	current_health = max_health
 	parent = get_parent()
+	max_health = parent.max_health
+	current_health = max_health
+	is_damageable = parent.is_damageable
+	iframes_duration = parent.iframes_duration
 
 
 func take_damage(damage: float) -> bool:
 	if is_damageable:
 		if not is_invincible:
 			current_health -= damage
+			emit_signal("hurt", damage)
 			invincibility_timer()
 			return true
 	return false
@@ -42,11 +46,12 @@ func take_damage(damage: float) -> bool:
 
 func invincibility_timer() -> void:
 	is_invincible = true
-	await get_tree().create_timer(i_frames_duration).timeout
+	await get_tree().create_timer(iframes_duration).timeout
 	is_invincible = false
 
 
 func heal(heal_amount: float) -> void:
+	emit_signal("healed", heal_amount)
 	current_health += heal_amount
 
 

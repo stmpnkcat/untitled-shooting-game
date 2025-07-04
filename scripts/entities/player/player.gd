@@ -1,8 +1,16 @@
 extends CharacterBody2D
 
-@export
-var speed: float
-var is_damageable: bool = true
+
+@export var movement_speed: float
+
+@onready var health_component: HealthComponent = $HealthComponent
+@export var max_health: float
+@export var is_damageable: bool
+@export var iframes_duration: float
+
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+
+@onready var physics_component: PhysicsComponent = $PhysicsComponent
 
 
 func _ready() -> void:
@@ -12,7 +20,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction.normalized()
-	velocity = direction * speed
+	velocity = direction * movement_speed
 	move_and_slide()
 
 	if velocity.length() > 0:

@@ -38,12 +38,14 @@ y_sort_enabled = true
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_e4crs")
-speed = 250.0
+movement_speed = 170.0
 exp_amount = 10.0
+max_health = 15.0
+is_damageable = true
+damage = 10.0
+knockback_force = 100.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]
-max_health = 15.0
-i_frames_duration = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cs4o0")
@@ -66,7 +68,5 @@ sprite_frames = SubResource("SpriteFrames_3kf42")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("3_leeo4")
-damage = 10.0
-knockback_force = 100.0
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]

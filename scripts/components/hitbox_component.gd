@@ -2,17 +2,18 @@ class_name HitboxComponent
 extends Area2D
 
 
-@export
+signal hit(hurtbox: HurtboxComponent)
+
+@onready var parent: Node2D = get_parent()
+
 var damage: float
-@export
 var knockback_force: float
-
-@onready
-var parent: Node2D = get_parent()
-
 var has_hit: bool = false
 
-signal hit(hurtbox: HurtboxComponent)
+
+func _ready() -> void:
+	damage = parent.damage
+	knockback_force = parent.knockback_force
 
 
 func _on_area_entered(hurtbox_component: HurtboxComponent) -> void:

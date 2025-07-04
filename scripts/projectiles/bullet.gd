@@ -1,21 +1,21 @@
 extends Node2D
 
-var damage : float
-var speed : float
-var max_range : float
-var travelled_distance : float = 0
 
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-func _ready() -> void:
-	$HitboxComponent.damage = damage
+var damage: float
+var knockback_force: float
+var movement_speed: float
+var max_range: float
+var travelled_distance: float = 0
 
 
 func _physics_process(delta: float) -> void:
 	
 	var direction : Vector2 = Vector2.RIGHT.rotated(rotation)
 	
-	position += direction * speed * delta
-	travelled_distance += speed * delta
+	position += direction * movement_speed * delta
+	travelled_distance += movement_speed * delta
 	
 	if travelled_distance > max_range:
 		queue_free()

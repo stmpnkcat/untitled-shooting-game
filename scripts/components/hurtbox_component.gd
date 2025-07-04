@@ -2,10 +2,9 @@ class_name HurtboxComponent
 extends Area2D
 
 
-@onready
-var parent: Node2D = get_parent()
-
 signal hurt(hitbox_component: HitboxComponent)
+
+@onready var parent: Node2D = get_parent()
 
 
 func recieve_hit(hitbox_component: HitboxComponent) -> void:

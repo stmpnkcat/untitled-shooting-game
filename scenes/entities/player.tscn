@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://smrqvk2xny7w"]
+[gd_scene load_steps=18 format=3 uid="uid://smrqvk2xny7w"]
 
 [ext_resource type="Texture2D" uid="uid://bw67vp26o511c" path="res://assets/sprites/idle2.png" id="1_meiw8"]
 [ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="6_gomo7"]
 [ext_resource type="PackedScene" uid="uid://b2v4o6hwdnhmp" path="res://scenes/items/pistol.tscn" id="6_qo74a"]
 [ext_resource type="Script" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
+[ext_resource type="Script" path="res://scripts/components/physics_component.gd" id="9_d5sts"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ily0"]
 radius = 11.0
@@ -66,7 +67,10 @@ collision_layer = 2
 collision_mask = 15
 platform_floor_layers = 0
 script = ExtResource("1_q7fu6")
-speed = 300.0
+movement_speed = 200.0
+max_health = 100.0
+is_damageable = true
+iframes_duration = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.19209e-07, -18)
@@ -82,7 +86,6 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_gjh13")]
-max_health = 100.0
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("6_gomo7")]
 collision_layer = 128
@@ -101,7 +104,7 @@ curve = SubResource("Curve2D_xdhba")
 position = Vector2(700, 700)
 rotation = -1.5708
 
-[node name="HealthBar" type="ProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -42.0
 offset_top = 14.0
 offset_right = 42.0
@@ -112,7 +115,6 @@ step = 1.0
 value = 60.0
 show_percentage = false
 script = ExtResource("8_xlsev")
-health_component = NodePath("../HealthComponent")
 
 [node name="PickupRange" type="Area2D" parent="."]
 collision_layer = 2
@@ -120,5 +122,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
 shape = SubResource("CircleShape2D_shi2s")
+
+[node name="PhysicsComponent" type="Node2D" parent="."]
+script = ExtResource("9_d5sts")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]
