@@ -42,7 +42,7 @@ speed = 250.0
 exp_amount = 10.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]
-max_health = 100.0
+max_health = 15.0
 i_frames_duration = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

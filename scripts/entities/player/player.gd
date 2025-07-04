@@ -23,5 +23,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_death() -> void:
 	game.player = null
-	game.switch_scene("res://scenes/main_menu.tscn")
+	game.switch_scene("res://scenes/UI/main_menu.tscn")
 	queue_free()

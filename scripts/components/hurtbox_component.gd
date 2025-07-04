@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 	var overlapping_bodies: Array = get_overlapping_bodies()
 	if len(overlapping_bodies) >= 1:
 		var body: Node2D = overlapping_bodies.front()
-		print(body.get_children())
 		var hitbox_component: HitboxComponent = body.get_node("HitboxComponent")
 		var health_component: HealthComponent = parent.get_node_or_null("HealthComponent")
 		if health_component and health_component.take_damage(hitbox_component.damage):
