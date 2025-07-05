@@ -16,12 +16,19 @@ func recieve_hit(hitbox_component: HitboxComponent) -> void:
 
 
 func flash_sprite() -> void:
+	const FLASH_DURATION: float = 0.16
 	var sprite: AnimatedSprite2D = parent.get_node("AnimatedSprite2D")
 	var mat: ShaderMaterial = sprite.material
 	if mat:
-		mat.set_shader_parameter("enabled", true)
-		await get_tree().create_timer(0.1).timeout
-		mat.set_shader_parameter("enabled", false)
+		var iterations: int = 1
+		if parent.iframes_duration != 0:
+			iterations = parent.iframes_duration / FLASH_DURATION / 2
+		for iteration in range(iterations):
+			mat.set_shader_parameter("enabled", true)
+			await get_tree().create_timer(FLASH_DURATION).timeout
+			mat.set_shader_parameter("enabled", false)
+			if iteration != iterations - 1:
+				await get_tree().create_timer(FLASH_DURATION).timeout
 
 
 func recieve_knockback(hitbox_component: HitboxComponent) -> void:
