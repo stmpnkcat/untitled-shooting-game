@@ -1,10 +1,12 @@
 extends Node
 
+
 var game_manager: Node
 var player: Node2D
 var exp_collected: float = 0
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var current_scene: Node
+
 
 func _ready() -> void:
 	var root: Node = get_tree().root

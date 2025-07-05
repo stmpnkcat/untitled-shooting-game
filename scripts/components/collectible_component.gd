@@ -10,11 +10,6 @@ var player: Node2D
 var parent: Node2D = get_parent()
 
 
-func _ready() -> void:
-	connect("area_entered", Callable(self, "_on_area_entered"))
-	connect("body_entered", Callable(self, "_on_body_entered"))
-
-
 func _on_area_entered(area: Area2D) -> void:
 	is_collected = true
 	player = area

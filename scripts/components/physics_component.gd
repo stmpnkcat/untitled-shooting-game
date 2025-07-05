@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 		velocity = ext_velocity
 	else:
 		velocity = base_velocity
-	ext_velocity = ext_velocity.move_toward(Vector2.ZERO, 500 * delta)
+	ext_velocity = ext_velocity.move_toward(Vector2.ZERO, 1000 * delta)
 
 
 func add_impulse(impulse: Vector2) -> void:

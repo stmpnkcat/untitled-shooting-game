@@ -8,8 +8,8 @@ var knockback_force: float
 var movement_speed: float
 var max_range: float
 var travelled_distance: float = 0
-
-
+	
+	
 func _physics_process(delta: float) -> void:
 	
 	var direction : Vector2 = Vector2.RIGHT.rotated(rotation)

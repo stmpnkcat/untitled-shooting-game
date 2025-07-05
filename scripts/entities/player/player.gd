@@ -18,9 +18,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction.normalized()
-	velocity = direction * movement_speed
+	physics_component.base_velocity = direction * movement_speed
+	velocity = physics_component.velocity
 	move_and_slide()
 
 	if velocity.length() > 0:

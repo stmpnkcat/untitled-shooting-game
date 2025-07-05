@@ -70,7 +70,7 @@ script = ExtResource("1_q7fu6")
 movement_speed = 200.0
 max_health = 100.0
 is_damageable = true
-iframes_duration = 0.5
+iframes_duration = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.19209e-07, -18)
