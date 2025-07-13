@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://smrqvk2xny7w"]
 
 [ext_resource type="Texture2D" uid="uid://bw67vp26o511c" path="res://assets/sprites/idle2.png" id="1_meiw8"]
-[ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
+[ext_resource type="Script" uid="uid://cqr73gxloiis3" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://shaders/hit_flash.tres" id="2_n4d54"]
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="2_ya6d1"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="6_gjh13"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="6_gomo7"]
 [ext_resource type="PackedScene" uid="uid://b2v4o6hwdnhmp" path="res://scenes/items/pistol.tscn" id="6_qo74a"]
-[ext_resource type="Script" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
-[ext_resource type="Script" path="res://scripts/components/physics_component.gd" id="9_d5sts"]
+[ext_resource type="Script" uid="uid://pekqkx1kkcw0" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
+[ext_resource type="Script" uid="uid://ccsd6bce5afd2" path="res://scripts/components/physics_component.gd" id="9_d5sts"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ily0"]
 radius = 11.0
@@ -68,18 +68,16 @@ collision_mask = 15
 motion_mode = 1
 platform_floor_layers = 4294901760
 script = ExtResource("1_q7fu6")
-movement_speed = 200.0
+movement_speed = 400.0
 max_health = 100.0
-is_damageable = true
-iframes_duration = 1.0
+iframes_duration = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.19209e-07, -18)
 shape = SubResource("CapsuleShape2D_6ily0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_xc700")
-position = Vector2(2, -18)
+position = Vector2(2, 0)
 scale = Vector2(0.370625, 0.370625)
 sprite_frames = SubResource("SpriteFrames_uxqha")
 animation = &"idle"
@@ -89,6 +87,7 @@ animation = &"idle"
 [node name="HealthComponent" parent="." instance=ExtResource("6_gjh13")]
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("6_gomo7")]
+position = Vector2(0, 19)
 collision_layer = 128
 collision_mask = 36
 
@@ -106,10 +105,14 @@ position = Vector2(700, 700)
 rotation = -1.5708
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 offset_left = -42.0
-offset_top = 14.0
+offset_top = 32.0
 offset_right = 42.0
-offset_bottom = 17.0
+offset_bottom = 35.0
+grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_6o5mm")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rnp1a")
 step = 1.0

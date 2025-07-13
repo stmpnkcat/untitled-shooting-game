@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://el7b32lyhdde"]
 
-[ext_resource type="Script" path="res://scripts/collectibles/exp.gd" id="1_dyla7"]
+[ext_resource type="Script" uid="uid://c52mb66p8o5cy" path="res://scripts/collectibles/exp.gd" id="1_dyla7"]
 [ext_resource type="Texture2D" uid="uid://b35pvobmu0s3c" path="res://assets/sprites/icon.svg" id="2_fsv0k"]
-[ext_resource type="Script" path="res://scripts/components/collectible_component.gd" id="3_dmx34"]
+[ext_resource type="Script" uid="uid://22iiqy3vm4bj" path="res://scripts/components/collectible_component.gd" id="3_dmx34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p15ge"]
 

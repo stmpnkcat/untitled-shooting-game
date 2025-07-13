@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://c3bl7k8jn41c"]
 
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="1_55wr1"]
-[ext_resource type="Script" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
+[ext_resource type="Script" uid="uid://be3pb0fin7gv7" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="3_3e4p7"]
-[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
+[ext_resource type="Script" uid="uid://cy2yy3540w5v3" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="4_maag8"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://shaders/hit_flash.tres" id="5_t0y35"]
 [ext_resource type="PackedScene" uid="uid://c5dp15igdbvxl" path="res://scenes/components/physics_component.tscn" id="7_lheee"]
@@ -42,9 +42,8 @@ platform_floor_layers = 4294901760
 script = ExtResource("1_e4crs")
 movement_speed = 170.0
 exp_amount = 10.0
-max_health = 15.0
+max_health = 1000.0
 is_damageable = true
-damage = 11.0
 knockback_force = 500.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]

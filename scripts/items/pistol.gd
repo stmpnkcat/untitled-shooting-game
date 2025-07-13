@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @export var Bullet: PackedScene
 @export var damage: float
 @export var knockback_force: float
@@ -8,6 +9,7 @@ extends Node2D
 
 @onready var shooting_point: Marker2D = $WeaponPivot/Sprite2D/ShootingPoint
 @onready var shooting_timer: Timer = $ShootingTimer 
+
 
 func _physics_process(delta: float) -> void:
 		

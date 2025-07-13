@@ -17,16 +17,11 @@ extends CharacterBody2D
 @onready var physics_component: PhysicsComponent = $PhysicsComponent
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if game.player:
 		var player_position: Vector2 = game.player.global_position
 		var direction: Vector2 = global_position.direction_to(player_position).normalized()
 		physics_component.base_velocity = direction * movement_speed
-	velocity = physics_component.velocity
-
-
-func _physics_process(delta: float) -> void:
-	move_and_slide()
 
 
 func _on_death() -> void:
