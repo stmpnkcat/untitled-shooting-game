@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 
 @export var movement_speed: float
@@ -14,14 +14,17 @@ extends CharacterBody2D
 @export var knockback_force: float
 
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+
 @onready var physics_component: PhysicsComponent = $PhysicsComponent
 
 
-func _physics_process(delta: float) -> void:
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if game.player:
 		var player_position: Vector2 = game.player.global_position
 		var direction: Vector2 = global_position.direction_to(player_position).normalized()
-		physics_component.base_velocity = direction * movement_speed
+		physics_component.set_base_velocity(direction * movement_speed)
+		state.linear_velocity = physics_component.velocity
+	
 
 
 func _on_death() -> void:

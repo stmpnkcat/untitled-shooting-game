@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 
 @export var movement_speed: float
@@ -17,12 +17,12 @@ func _ready() -> void:
 	game.player = self
 
 
-func _physics_process(delta: float) -> void:
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	direction.normalized()
-	physics_component.base_velocity = direction * movement_speed
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	physics_component.set_base_velocity(direction * movement_speed)
+	state.linear_velocity = physics_component.velocity
 
-	if velocity.length() > 0:
+	if direction.length() > 0:
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.play("idle")

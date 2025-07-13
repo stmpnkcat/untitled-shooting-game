@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3bl7k8jn41c"]
+[gd_scene load_steps=13 format=3 uid="uid://c3bl7k8jn41c"]
 
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="1_55wr1"]
 [ext_resource type="Script" uid="uid://be3pb0fin7gv7" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
+[ext_resource type="PhysicsMaterial" uid="uid://crst4uwi1bgs6" path="res://physics_materials/entity_material.tres" id="1_p7d0w"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="3_3e4p7"]
 [ext_resource type="Script" uid="uid://cy2yy3540w5v3" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="4_maag8"]
@@ -33,18 +34,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mob" type="CharacterBody2D" groups=["mobs"]]
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 15
-motion_mode = 1
-platform_floor_layers = 4294901760
+physics_material_override = ExtResource("1_p7d0w")
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_e4crs")
 movement_speed = 170.0
 exp_amount = 10.0
-max_health = 1000.0
+max_health = 15.0
 is_damageable = true
-knockback_force = 500.0
+damage = 9.0
+knockback_force = 200.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]
 
