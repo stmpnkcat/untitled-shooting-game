@@ -25,9 +25,8 @@ func flash_sprite() -> void:
 		var total_time: float = max(parent.iframes_duration, FLASH_DURATION)
 		var iterations: int = int(ceil(total_time / FLASH_DURATION / 2))
 		
-		for i in range(iterations):
+		for i: int in range(iterations):
 			mat.set_shader_parameter("enabled", true)
-			print("flashing")
 			await get_tree().create_timer(FLASH_DURATION).timeout
 			mat.set_shader_parameter("enabled", false)
 			

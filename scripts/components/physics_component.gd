@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	impulse_velocity = impulse_velocity.move_toward(Vector2.ZERO, delta * 1000)
 
 
-func set_base_velocity(new_base_velocity) -> void:
+func set_base_velocity(new_base_velocity: Vector2) -> void:
 	base_velocity = new_base_velocity
 
 

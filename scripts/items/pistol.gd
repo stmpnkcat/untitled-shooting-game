@@ -12,7 +12,6 @@ extends Node2D
 
 
 func _physics_process(delta: float) -> void:
-		
 		look_at(get_global_mouse_position())
 		
 		if shooting_timer.is_stopped() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -21,7 +20,6 @@ func _physics_process(delta: float) -> void:
 
 
 func shoot() -> void:
-	
 	var new_bullet: Node2D = Bullet.instantiate()
 	
 	new_bullet.global_position = shooting_point.global_position

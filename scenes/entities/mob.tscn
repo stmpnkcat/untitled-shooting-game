@@ -47,7 +47,7 @@ exp_amount = 10.0
 max_health = 15.0
 is_damageable = true
 damage = 9.0
-knockback_force = 200.0
+knockback_force = 50.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3e4p7")]
 
