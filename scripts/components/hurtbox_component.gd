@@ -8,7 +8,6 @@ signal hurt(hitbox_component: HitboxComponent)
 
 
 func recieve_hit(hitbox_component: HitboxComponent) -> void:
-	
 	var health_component: HealthComponent = parent.health_component
 	if health_component.take_damage(hitbox_component.damage):
 		hurt.emit(hitbox_component)
@@ -35,7 +34,7 @@ func flash_sprite() -> void:
 
 
 func recieve_knockback(hitbox_component: HitboxComponent) -> void:
-	var direction: Vector2 = (parent.global_position - hitbox_component.global_position).normalized()
+	var direction: Vector2 = (parent.global_position - hitbox_component.original_position).normalized()
 	var knockback_force: Vector2 = direction * hitbox_component.knockback_force
 	parent.physics_component.apply_impulse(knockback_force)
 

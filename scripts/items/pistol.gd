@@ -29,3 +29,4 @@ func shoot() -> void:
 	new_bullet.movement_speed = movement_speed
 	new_bullet.max_range = max_range
 	get_node("/root/Main/Projectiles").add_child(new_bullet)
+	new_bullet.hitbox_component.original_position = global_position

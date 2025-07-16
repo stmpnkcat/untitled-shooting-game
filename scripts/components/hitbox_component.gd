@@ -9,6 +9,7 @@ signal hit(hurtbox: HurtboxComponent)
 var damage: float
 var knockback_force: float
 var has_hit: bool = false
+var original_position: Vector2
 
 
 func _ready() -> void:
@@ -19,5 +20,7 @@ func _ready() -> void:
 func _on_area_entered(hurtbox_component: HurtboxComponent) -> void:
 	if not has_hit:
 		hit.emit(hurtbox_component)
+		if not original_position:
+			original_position = global_position
 		hurtbox_component.recieve_hit(self)
 		has_hit = true
