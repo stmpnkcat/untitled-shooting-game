@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2rwbi3ntg6ml"]
+[gd_scene load_steps=6 format=3 uid="uid://b2rwbi3ntg6ml"]
 
 [ext_resource type="Script" uid="uid://x3lj2sw6yujr" path="res://scripts/projectiles/bullet.gd" id="1_lhkea"]
 [ext_resource type="Texture2D" uid="uid://b35pvobmu0s3c" path="res://assets/sprites/icon.svg" id="2_yoiyr"]
 [ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/components/hitbox_component.tscn" id="3_pe7te"]
+[ext_resource type="Script" uid="uid://ccsd6bce5afd2" path="res://scripts/components/physics_component.gd" id="4_i2bxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khraq"]
 size = Vector2(38, 6)
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="RigidBody2D"]
 top_level = true
 script = ExtResource("1_lhkea")
 
@@ -21,5 +22,9 @@ collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_khraq")
+
+[node name="PhysicsComponent" type="Node2D" parent="."]
+script = ExtResource("4_i2bxc")
+metadata/_custom_type_script = "uid://ccsd6bce5afd2"
 
 [connection signal="hit" from="HitboxComponent" to="." method="_on_hitbox_component_hit"]

@@ -9,7 +9,7 @@ script = ExtResource("1_es3bs")
 Bullet = ExtResource("2_b0ijk")
 damage = 10.0
 knockback_force = 300.0
-movement_speed = 3000.0
+movement_speed = 1500.0
 max_range = 1000.0
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
