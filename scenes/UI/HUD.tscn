@@ -10,7 +10,7 @@ bg_color = Color(7.89344e-06, 0.659504, 0.847415, 1)
 
 [node name="Hud" type="CanvasLayer"]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="ExpBar" type="ProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

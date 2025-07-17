@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://smrqvk2xny7w"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://crst4uwi1bgs6" path="res://physics_materials/entity_material.tres" id="1_b6tgf"]
+[ext_resource type="PhysicsMaterial" uid="uid://crst4uwi1bgs6" path="res://assets/physics_materials/entity_material.tres" id="1_b6tgf"]
 [ext_resource type="Texture2D" uid="uid://bw67vp26o511c" path="res://assets/sprites/idle2.png" id="1_meiw8"]
 [ext_resource type="Script" uid="uid://cqr73gxloiis3" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
-[ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://shaders/hit_flash.tres" id="2_n4d54"]
+[ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://assets/shaders/hit_flash.tres" id="2_n4d54"]
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="2_ya6d1"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="6_gjh13"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="6_gomo7"]
@@ -14,6 +14,25 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ily0"]
 radius = 11.0
 height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ex0us"]
+radius = 21.0
+height = 64.0
+
+[sub_resource type="Curve2D" id="Curve2D_xdhba"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 700, 700, 0, 0, 0, 0, 700, -700, 0, 0, 0, 0, -700, -700, 0, 0, 0, 0, -700, 700, 0, 0, 0, 0, 700, 700)
+}
+point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o5mm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnp1a"]
+bg_color = Color(1, 0.324779, 0.402192, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shi2s"]
+radius = 102.122
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xc700"]
 resource_local_to_scene = true
@@ -43,25 +62,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ex0us"]
-radius = 21.0
-height = 64.0
-
-[sub_resource type="Curve2D" id="Curve2D_xdhba"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 700, 700, 0, 0, 0, 0, 700, -700, 0, 0, 0, 0, -700, -700, 0, 0, 0, 0, -700, 700, 0, 0, 0, 0, 700, 700)
-}
-point_count = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6o5mm"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnp1a"]
-bg_color = Color(1, 0.324779, 0.402192, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_shi2s"]
-radius = 102.122
-
 [node name="Player" type="RigidBody2D"]
 y_sort_enabled = true
 collision_layer = 2
@@ -79,18 +79,12 @@ iframes_duration = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6ily0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_xc700")
-position = Vector2(2, 0)
-scale = Vector2(0.370625, 0.370625)
-sprite_frames = SubResource("SpriteFrames_uxqha")
-animation = &"idle"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_gjh13")]
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("6_gomo7")]
+visible = false
 position = Vector2(0, 19)
 collision_layer = 128
 collision_mask = 36
@@ -98,8 +92,6 @@ collision_mask = 36
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_ex0us")
-
-[node name="Pistol" parent="." instance=ExtResource("6_qo74a")]
 
 [node name="EnemySpawnPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xdhba")
@@ -129,9 +121,19 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRange"]
+visible = false
 shape = SubResource("CircleShape2D_shi2s")
 
 [node name="PhysicsComponent" type="Node2D" parent="."]
 script = ExtResource("9_d5sts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_xc700")
+position = Vector2(2, 0)
+scale = Vector2(0.370625, 0.370625)
+sprite_frames = SubResource("SpriteFrames_uxqha")
+animation = &"idle"
+
+[node name="Pistol" parent="." instance=ExtResource("6_qo74a")]
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]

@@ -11,6 +11,7 @@ func recieve_hit(hitbox_component: HitboxComponent) -> void:
 	var health_component: HealthComponent = parent.health_component
 	if health_component.take_damage(hitbox_component.damage):
 		hurt.emit(hitbox_component)
+		game.game_manager.spawn_damage_number(hitbox_component.global_position, hitbox_component.damage)
 		flash_sprite()
 		recieve_knockback(hitbox_component)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx0cclyboyyfv"]
+[gd_scene load_steps=9 format=3 uid="uid://cx0cclyboyyfv"]
 
 [ext_resource type="PackedScene" uid="uid://smrqvk2xny7w" path="res://scenes/entities/player.tscn" id="1_l7tcq"]
 [ext_resource type="PackedScene" uid="uid://c3bl7k8jn41c" path="res://scenes/entities/mob.tscn" id="3_7368b"]
@@ -6,6 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://el7b32lyhdde" path="res://scenes/collectibles/exp.tscn" id="5_buwyl"]
 [ext_resource type="Script" uid="uid://dmw8rdxe3m2j1" path="res://scripts/game_manager.gd" id="5_wkisa"]
 [ext_resource type="PackedScene" uid="uid://btiow6ip5j4aj" path="res://scenes/UI/HUD.tscn" id="6_8mqa2"]
+[ext_resource type="PackedScene" uid="uid://byl3xqwx6obui" path="res://scenes/UI/damage_number.tscn" id="6_o6xl0"]
+
+[sub_resource type="Environment" id="Environment_tefeu"]
+background_mode = 3
+tonemap_exposure = 2.0
+glow_enabled = true
+glow_levels/2 = 2.0
+glow_intensity = 0.2
+glow_bloom = 0.1
+glow_blend_mode = 0
+glow_hdr_threshold = 0.8
+adjustment_enabled = true
+adjustment_saturation = 1.3
 
 [node name="Main" type="Node2D"]
 
@@ -15,6 +28,7 @@
 motion_mirroring = Vector2(1705, 960)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_wfrdp")
 centered = false
@@ -24,8 +38,10 @@ script = ExtResource("5_wkisa")
 Player = ExtResource("1_l7tcq")
 Enemy = ExtResource("3_7368b")
 Exp = ExtResource("5_buwyl")
+DamageNumber = ExtResource("6_o6xl0")
 
 [node name="EnemySpawnTimer" type="Timer" parent="GameManager"]
+wait_time = 0.5
 autostart = true
 
 [node name="Projectiles" type="Node" parent="."]
@@ -34,12 +50,20 @@ autostart = true
 unique_name_in_owner = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_l7tcq")]
+position = Vector2(255, 170)
+is_damageable = false
 
 [node name="Collectibles" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Exp" type="Node" parent="Collectibles"]
 
+[node name="Effects" type="Node" parent="."]
+unique_name_in_owner = true
+
 [node name="Hud" parent="." instance=ExtResource("6_8mqa2")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tefeu")
 
 [connection signal="timeout" from="GameManager/EnemySpawnTimer" to="GameManager" method="_on_enemy_spawn_timer_timeout"]
