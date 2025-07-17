@@ -49,10 +49,6 @@ autostart = true
 [node name="Entities" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Player" parent="Entities" instance=ExtResource("1_l7tcq")]
-position = Vector2(255, 170)
-is_damageable = false
-
 [node name="Collectibles" type="Node" parent="."]
 unique_name_in_owner = true
 

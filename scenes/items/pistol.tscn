@@ -21,7 +21,7 @@ scale = Vector2(0.0323069, 0.217589)
 texture = ExtResource("1_bmj54")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Sprite2D"]
-position = Vector2(0.00011205, 4.59582)
+position = Vector2(-0.0004482, -18.3833)
 rotation = -1.57082
 scale = Vector2(4.59581, 30.9532)
 skew = 2.38419e-05

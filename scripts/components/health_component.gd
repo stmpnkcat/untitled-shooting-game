@@ -8,6 +8,7 @@ signal hurt(amount: float)
 
 @onready var parent: Node2D = get_parent()
 
+
 var max_health: float:
 	set (value):
 		max_health = value

@@ -11,6 +11,13 @@ const PLAYER_SPAWN_POSITION : Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	game.game_manager = self
+	spawn_player()
+
+
+func spawn_player() -> void:
+	var new_player: RigidBody2D = Player.instantiate()
+	new_player.position = Vector2.ZERO
+	%Entities.add_child(new_player)
 
 
 func spawn_damage_number(position: Vector2, damage_number: float) -> void:
