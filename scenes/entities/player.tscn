@@ -73,7 +73,6 @@ lock_rotation = true
 script = ExtResource("1_q7fu6")
 movement_speed = 400.0
 max_health = 1000.0
-is_damageable = true
 iframes_duration = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

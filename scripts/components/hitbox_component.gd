@@ -8,8 +8,8 @@ signal hit(hurtbox: HurtboxComponent)
 
 var damage: float
 var knockback_force: float
-var has_hit: bool = false
 var original_position: Vector2
+var hit_list: Array
 
 
 func _ready() -> void:
@@ -17,10 +17,15 @@ func _ready() -> void:
 	knockback_force = parent.knockback_force
 
 
-func _on_area_entered(hurtbox_component: HurtboxComponent) -> void:
-	if not has_hit:
-		hit.emit(hurtbox_component)
+func _process(delta: float) -> void:
+	hit_list = get_overlapping_areas()
+	if hit_list:
+		var closest: HurtboxComponent = hit_list[0]
+		for hurtbox in hit_list:
+			if original_position.distance_to(hurtbox.global_position) < original_position.distance_to(closest.global_position):
+				closest = hurtbox
+		hit.emit(closest)
 		if not original_position:
 			original_position = global_position
-		hurtbox_component.recieve_hit(self)
-		has_hit = true
+		closest.recieve_hit(self)
+		queue_free()
