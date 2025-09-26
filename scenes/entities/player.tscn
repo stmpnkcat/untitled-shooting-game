@@ -2,14 +2,14 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://crst4uwi1bgs6" path="res://assets/physics_materials/entity_material.tres" id="1_b6tgf"]
 [ext_resource type="Texture2D" uid="uid://bw67vp26o511c" path="res://assets/sprites/idle2.png" id="1_meiw8"]
-[ext_resource type="Script" uid="uid://cqr73gxloiis3" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
+[ext_resource type="Script" path="res://scripts/entities/player/player.gd" id="1_q7fu6"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://assets/shaders/hit_flash.tres" id="2_n4d54"]
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="2_ya6d1"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="6_gjh13"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="6_gomo7"]
 [ext_resource type="PackedScene" uid="uid://b2v4o6hwdnhmp" path="res://scenes/items/pistol.tscn" id="6_qo74a"]
-[ext_resource type="Script" uid="uid://pekqkx1kkcw0" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
-[ext_resource type="Script" uid="uid://ccsd6bce5afd2" path="res://scripts/components/physics_component.gd" id="9_d5sts"]
+[ext_resource type="Script" path="res://scripts/entities/player/health_bar.gd" id="8_xlsev"]
+[ext_resource type="Script" path="res://scripts/components/physics_component.gd" id="9_d5sts"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ily0"]
 radius = 14.0

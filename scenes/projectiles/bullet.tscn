@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2rwbi3ntg6ml"]
 
-[ext_resource type="Script" uid="uid://x3lj2sw6yujr" path="res://scripts/projectiles/bullet.gd" id="1_lhkea"]
+[ext_resource type="Script" path="res://scripts/projectiles/bullet.gd" id="1_lhkea"]
 [ext_resource type="Texture2D" uid="uid://b35pvobmu0s3c" path="res://assets/sprites/icon.svg" id="2_yoiyr"]
 [ext_resource type="PackedScene" uid="uid://be2vnjx2sjrb7" path="res://scenes/components/hitbox_component.tscn" id="3_pe7te"]
-[ext_resource type="Script" uid="uid://ccsd6bce5afd2" path="res://scripts/components/physics_component.gd" id="4_i2bxc"]
+[ext_resource type="Script" path="res://scripts/components/physics_component.gd" id="4_i2bxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khraq"]
 size = Vector2(6, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://byl3xqwx6obui"]
 
 [ext_resource type="FontFile" uid="uid://dw8jtlpaw2w3t" path="res://assets/fonts/AchtungBravo-KVRDp.ttf" id="1_y0swk"]
-[ext_resource type="Script" uid="uid://bblgqps33cuqo" path="res://scripts/UI/damage_number.gd" id="2_y6eba"]
+[ext_resource type="Script" path="res://scripts/UI/damage_number.gd" id="2_y6eba"]
 
 [sub_resource type="Animation" id="Animation_tlnot"]
 length = 0.001
@@ -50,8 +50,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hmssa"]
 _data = {
-&"RESET": SubResource("Animation_tlnot"),
-&"start": SubResource("Animation_y6eba")
+"RESET": SubResource("Animation_tlnot"),
+"start": SubResource("Animation_y6eba")
 }
 
 [node name="DamageNumber" type="Control"]
@@ -82,10 +82,8 @@ text = "67"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_hmssa")
+"": SubResource("AnimationLibrary_hmssa")
 }

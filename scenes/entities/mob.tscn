@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3bl7k8jn41c"]
 
 [ext_resource type="Texture2D" uid="uid://dka42wsdll012" path="res://assets/sprites/idle1.png" id="1_55wr1"]
-[ext_resource type="Script" uid="uid://be3pb0fin7gv7" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
+[ext_resource type="Script" path="res://scripts/entities/mob/mob.gd" id="1_e4crs"]
 [ext_resource type="PhysicsMaterial" uid="uid://crst4uwi1bgs6" path="res://assets/physics_materials/entity_material.tres" id="1_p7d0w"]
 [ext_resource type="PackedScene" uid="uid://crarpk83vsb7x" path="res://scenes/components/health_component.tscn" id="3_3e4p7"]
-[ext_resource type="Script" uid="uid://cy2yy3540w5v3" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
+[ext_resource type="Script" path="res://scripts/components/hitbox_component.gd" id="3_leeo4"]
 [ext_resource type="PackedScene" uid="uid://crcaocj0p7bca" path="res://scenes/components/hurtbox_component.tscn" id="4_maag8"]
 [ext_resource type="Shader" uid="uid://0d2c688cqbbs" path="res://assets/shaders/hit_flash.tres" id="5_t0y35"]
 [ext_resource type="PackedScene" uid="uid://c5dp15igdbvxl" path="res://scenes/components/physics_component.tscn" id="7_lheee"]
